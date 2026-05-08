@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-surface: #F5F2EC;
+  --color-topsoil: #D3C49A;
+  --color-sediment: #B8C9A3;
+  --color-limestone: #C8D8C0;
+  --color-shale: #A8B8C8;
+  --color-schist: #7A9090;
+  --color-granite: #5A4040;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-surface);
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', Georgia, serif;
+  color: #2a2a28;
+}
+
+/* ---- Markdown 内容样式 ---- */
+.prose-geo h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: #2a2a28; }
+.prose-geo h2 { font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: #3a3a36; border-bottom: 1px solid #D3C49A; padding-bottom: 0.25rem; }
+.prose-geo h3 { font-size: 1.1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; color: #4a4a44; }
+.prose-geo p  { line-height: 1.9; margin-bottom: 1rem; font-size: 0.95rem; }
+.prose-geo ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+.prose-geo li { line-height: 1.8; font-size: 0.95rem; margin-bottom: 0.25rem; }
+.prose-geo blockquote { border-left: 3px solid #B8C9A3; padding-left: 1rem; color: #5a5a54; font-style: italic; margin: 1rem 0; }
+.prose-geo code { background: #E8E4DA; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+.prose-geo pre  { background: #2a2a28; color: #E8E4DA; padding: 1rem; border-radius: 8px; overflow-x: auto; margin: 1rem 0; }
+.prose-geo pre code { background: transparent; padding: 0; font-size: 0.85rem; }
+.prose-geo a { color: #4A7060; text-decoration: underline; text-underline-offset: 3px; }
+.prose-geo img { border-radius: 8px; max-width: 100%; margin: 1rem auto; display: block; }
+.prose-geo table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.9rem; }
+.prose-geo th, .prose-geo td { border: 1px solid #D3C49A; padding: 0.5rem 0.75rem; text-align: left; }
+.prose-geo th { background: #E8E4DA; font-weight: 600; }
+
+/* ---- KaTeX ---- */
+.katex-display { overflow-x: auto; padding: 0.5rem 0; }
+
+/* ---- 流动装饰曲线动画 ---- */
+@keyframes flowLine {
+  0%   { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+.flow-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: flowLine 3s ease forwards;
+}
+
+/* ---- 地壳图层 hover ---- */
+.layer-group { cursor: pointer; transition: filter 0.2s; }
+.layer-group:hover .layer-shape { filter: brightness(1.08); }
+.layer-group.active .layer-shape { stroke-width: 2.5; }
+
+/* ---- 同心圆环导航 ---- */
+.ring-group { cursor: pointer; transition: all 0.3s ease; }
+.ring-group:hover circle { opacity: 1 !important; }
+
+/* ---- 内容区淡入 ---- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.4s ease forwards; }
+
+/* ---- 卡片有机形状 ---- */
+.card-organic {
+  border-radius: 16px 8px 20px 10px / 10px 18px 8px 16px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(80,60,40,0.07);
+}
+
+/* ---- scrollbar ---- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F5F2EC; }
+::-webkit-scrollbar-thumb { background: #B4B2A9; border-radius: 3px; }
